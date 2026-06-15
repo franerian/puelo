@@ -429,9 +429,10 @@ GALLERIES.forEach((g, gi) => {
     const src = encodeURI(BASE + m.s);
     const d = DIMS[m.s];
     const sizeAttr = d ? ` width="${d[0]}" height="${d[1]}"` : '';
+    const poster = encodeURI(BASE + m.s.replace('.mp4', '_poster.jpg'));
     const inner = m.t === 'img'
       ? `<img loading="lazy"${sizeAttr} src="${src}" alt="${g.title}">`
-      : `<video src="${src}" muted playsinline preload="metadata"></video><span class="play"><span class="material-symbols-outlined">play_arrow</span></span>`;
+      : `<img loading="lazy" width="720" height="1280" src="${poster}" alt="${g.title}"><span class="play"><span class="material-symbols-outlined">play_arrow</span></span>`;
     fig.innerHTML = `<span class="m-badge">${g.badge}</span>` + inner;
     fig.addEventListener('click', () => openLB(gi, ii));
     grid.appendChild(fig);
@@ -453,7 +454,7 @@ function renderLB() {
   const src = encodeURI(BASE + m.s);
   lbStage.innerHTML = m.t === 'img'
     ? `<img src="${src}" alt="${g.title}">`
-    : `<video src="${src}" controls autoplay playsinline></video>`;
+    : `<video src="${src}" poster="${encodeURI(BASE + m.s.replace('.mp4', '_poster.jpg'))}" controls autoplay playsinline></video>`;
   lbCaption.textContent = g.title;
   lbCounter.textContent = (curI + 1) + ' / ' + g.items.length;
 }
