@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Constructora Puelo | Viviendas y Obras Civiles en Mendoza</title>
 <meta name="description" content="Constructora en Mendoza con +25 años de experiencia. Viviendas privadas, dúplex, movimiento de suelo y alquiler de maquinaria. Gran Mendoza y Valle de Uco.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/landing/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -164,7 +164,7 @@
 <header class="fixed top-0 inset-x-0 z-50 bg-primary-container shadow-sm">
   <nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit-md max-w-container-max mx-auto">
     <a href="#top" class="flex items-center">
-      <img src="puelo_logo.png" alt="Constructora Puelo" class="h-9 md:h-10 w-auto object-contain">
+      <img src="/landing/puelo_logo.png" alt="Constructora Puelo" class="h-9 md:h-10 w-auto object-contain">
     </a>
     <div class="hidden md:flex items-center gap-unit-lg">
       <ul class="flex items-center gap-unit-lg">
@@ -205,7 +205,7 @@
 <!-- ============ HERO ============ -->
 <section class="relative h-screen min-h-[600px] w-full flex items-center overflow-hidden bg-primary">
   <div class="absolute inset-0 z-0">
-    <img src="renders/render_1.jpeg" alt="Render del proyecto de dúplex en Vistalba, Mendoza" class="w-full h-full object-cover object-center opacity-70">
+    <img src="/landing/renders/render_1.jpeg" alt="Render del proyecto de dúplex en Vistalba, Mendoza" class="w-full h-full object-cover object-center opacity-70">
     <div class="absolute inset-0 bg-gradient-to-r from-primary-container/95 via-primary-container/75 to-primary-container/30"></div>
   </div>
   <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
@@ -230,7 +230,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-unit-xl items-center">
     <div class="order-2 lg:order-1 relative">
       <div class="absolute -bottom-3 -right-3 w-full h-full border border-primary-container/15 rounded hidden lg:block" aria-hidden="true"></div>
-      <img src="obras/obras_18.jpeg" alt="Equipo de Constructora Puelo trabajando en obra en Mendoza" class="relative z-10 w-full h-[480px] lg:h-[600px] object-cover rounded shadow-sm">
+      <img src="/landing/obras/obras_18.jpeg" alt="Equipo de Constructora Puelo trabajando en obra en Mendoza" class="relative z-10 w-full h-[480px] lg:h-[600px] object-cover rounded shadow-sm">
     </div>
     <div class="order-1 lg:order-2">
       <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary-container/70 mb-4">Nosotros</p>
@@ -300,7 +300,7 @@
   <div class="py-section-gap px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto text-on-primary-container">
     <div class="col-span-1 flex flex-col justify-between">
       <div>
-        <img src="puelo_logo.png" alt="Constructora Puelo" class="h-10 w-auto object-contain mb-6">
+        <img src="/landing/puelo_logo.png" alt="Constructora Puelo" class="h-10 w-auto object-contain mb-6">
         <p class="font-body-md text-body-md text-on-primary-container/70 max-w-xs">Tu obra, nuestra responsabilidad. Construcción de viviendas, dúplex y obras civiles en Mendoza.</p>
       </div>
       <p class="mt-8 font-label-caps text-label-caps text-on-primary-container/70 uppercase tracking-widest">© 2026 Puelo Desarrollos SAS. Todos los derechos reservados.</p>
@@ -370,6 +370,9 @@ SERVICIOS.forEach((s, i) => {
   sList.appendChild(card);
 });
 
+/* ruta base absoluta — evita que los src relativos se rompan si la URL no trae la barra final */
+const BASE = '/landing/';
+
 /* ---------- Dimensiones reales (reservan espacio → lazy-load fiable en mobile) ---------- */
 const DIMS = {
   'casa_guada/casa_guada.png':[2390,1372], 'casa_guada/casa_guada_1.png':[1280,832],
@@ -423,7 +426,7 @@ GALLERIES.forEach((g, gi) => {
   g.items.forEach((m, ii) => {
     const fig = document.createElement('figure');
     fig.className = 'masonry-item';
-    const src = encodeURI(m.s);
+    const src = encodeURI(BASE + m.s);
     const d = DIMS[m.s];
     const sizeAttr = d ? ` width="${d[0]}" height="${d[1]}"` : '';
     const inner = m.t === 'img'
@@ -447,7 +450,7 @@ let curG = 0, curI = 0;
 function renderLB() {
   const g = GALLERIES[curG];
   const m = g.items[curI];
-  const src = encodeURI(m.s);
+  const src = encodeURI(BASE + m.s);
   lbStage.innerHTML = m.t === 'img'
     ? `<img src="${src}" alt="${g.title}">`
     : `<video src="${src}" controls autoplay playsinline></video>`;
