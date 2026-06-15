@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructora Puelo | Viviendas y Obras Civiles en Mendoza</title>
+<meta name="description" content="Constructora en Mendoza con +25 años de experiencia. Viviendas privadas, dúplex, movimiento de suelo y alquiler de maquinaria. Gran Mendoza y Valle de Uco.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-container-high": "#eae7e9",
+          "surface-container-highest": "#e4e2e4",
+          "surface-container": "#f0edef",
+          "surface-container-low": "#f6f3f5",
+          "surface-container-lowest": "#ffffff",
+          "on-surface-variant": "#45464d",
+          "on-surface": "#1b1b1d",
+          "on-primary": "#ffffff",
+          "outline": "#76777d",
+          "outline-variant": "#c6c6cd",
+          "surface": "#fbf8fb",
+          "primary-container": "#172035",
+          "primary": "#01081c",
+          "on-primary-container": "#7f87a1",
+          "tertiary-fixed": "#e2e2e2",
+          "tertiary-fixed-dim": "#c6c6c7",
+          "primary-fixed": "#d9e2ff",
+          "primary-fixed-dim": "#bdc6e2",
+          "background": "#fbf8fb"
+        },
+        borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+        spacing: {
+          "unit-lg": "32px", "margin-desktop": "64px", "section-gap": "120px",
+          "container-max": "1280px", "unit-xl": "64px", "unit-md": "16px",
+          "unit-sm": "8px", "margin-mobile": "20px", "unit-xs": "4px", "gutter": "24px"
+        },
+        fontFamily: {
+          "display-lg": ["Montserrat"], "body-lg": ["Inter"], "label-caps": ["Inter"],
+          "body-md": ["Inter"], "headline-md": ["Montserrat"],
+          "headline-lg-mobile": ["Montserrat"], "headline-lg": ["Montserrat"]
+        },
+        fontSize: {
+          "display-lg": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+          "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+          "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "600" }],
+          "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+          "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+          "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+          "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  body { background-color: #F8F9FA; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ---------- Masonry ---------- */
+  .masonry { column-gap: 16px; column-count: 1; }
+  @media (min-width: 640px) { .masonry { column-count: 2; } }
+  @media (min-width: 1024px) { .masonry { column-count: 3; } }
+  .masonry-item {
+    position: relative; break-inside: avoid; margin: 0 0 16px; cursor: pointer;
+    overflow: hidden; border-radius: 4px; background: #e4e2e4; display: block;
+  }
+  .masonry-item img, .masonry-item video {
+    width: 100%; height: auto; display: block;
+    transition: transform .7s ease; will-change: transform;
+  }
+  .masonry-item:hover img, .masonry-item:hover video { transform: scale(1.05); }
+  /* Tinte navy sutil (solo galerías marcadas), se desvanece al hover */
+  .masonry-tint .masonry-item::after {
+    content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: #172035; opacity: .4; transition: opacity .6s ease;
+  }
+  .masonry-tint .masonry-item:hover::after { opacity: 0; }
+  .masonry-item .m-badge {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    padding: 4px 10px; font-family: Inter, sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: #172035; background: #d9e2ff;
+  }
+  .masonry-item .play {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .masonry-item .play span {
+    display: flex; align-items: center; justify-content: center;
+    width: 60px; height: 60px; border-radius: 999px;
+    background: rgba(255,255,255,.92); color: #172035; font-size: 38px;
+    box-shadow: 0 6px 20px rgba(1,8,28,.3); transition: transform .3s ease;
+  }
+  .masonry-item:hover .play span { transform: scale(1.08); }
+
+  /* ---------- Lightbox ---------- */
+  #lightbox {
+    position: fixed; inset: 0; z-index: 100; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(1,8,28,.96); backdrop-filter: blur(4px);
+    overscroll-behavior: contain;
+  }
+  #lightbox.open { display: flex; }
+  .lb-stage {
+    max-width: min(94vw, 1200px); max-height: 82vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lb-stage img, .lb-stage video {
+    max-width: 94vw; max-height: 82vh; width: auto; height: auto;
+    object-fit: contain; border-radius: 4px; background: #000;
+  }
+  .lb-btn {
+    position: absolute; z-index: 2; display: flex; align-items: center; justify-content: center;
+    color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+    cursor: pointer; transition: background .2s ease;
+  }
+  .lb-btn:hover { background: rgba(255,255,255,.2); }
+  .lb-close { top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 999px; }
+  .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 999px; }
+  .lb-prev { left: 16px; } .lb-next { right: 16px; }
+  .lb-caption {
+    position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center;
+    color: rgba(255,255,255,.85); font-family: Inter, sans-serif; font-size: 14px;
+    padding: 0 24px; pointer-events: none;
+  }
+  .lb-counter {
+    position: absolute; top: 22px; left: 24px; color: rgba(255,255,255,.75);
+    font-family: Inter, sans-serif; font-size: 13px; letter-spacing: .05em;
+  }
+  @media (max-width: 640px) {
+    .lb-prev, .lb-next { width: 44px; height: 44px; }
+    .lb-prev { left: 8px; } .lb-next { right: 8px; }
+    .lb-close { top: 10px; right: 10px; }
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .wa-float {
+    position: fixed; right: 20px; bottom: 20px; z-index: 90;
+    width: 60px; height: 60px; border-radius: 999px; background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(37,211,102,.45); transition: transform .2s ease;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 34px; height: 34px; fill: #fff; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body class="bg-[#F8F9FA] text-on-surface font-body-md antialiased overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-primary-container shadow-sm">
+  <nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit-md max-w-container-max mx-auto">
+    <a href="#top" class="flex items-center">
+      <img src="puelo_logo.png" alt="Constructora Puelo" class="h-9 md:h-10 w-auto object-contain">
+    </a>
+    <div class="hidden md:flex items-center gap-unit-lg">
+      <ul class="flex items-center gap-unit-lg">
+        <li><a class="text-on-primary-container/80 font-medium hover:text-primary-fixed transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest" href="#nosotros">Nosotros</a></li>
+        <li><a class="text-on-primary-container/80 font-medium hover:text-primary-fixed transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest" href="#servicios">Servicios</a></li>
+        <li><a class="text-on-primary-container/80 font-medium hover:text-primary-fixed transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest" href="#obras">Obras</a></li>
+        <li><a class="text-on-primary-container/80 font-medium hover:text-primary-fixed transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest" href="#testimonios">Reseñas</a></li>
+        <li><a class="text-on-primary-container/80 font-medium hover:text-primary-fixed transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest" href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="flex items-center gap-2 bg-primary-fixed text-primary px-6 py-3 rounded hover:bg-primary-fixed-dim transition-all duration-200 font-label-caps text-label-caps uppercase tracking-widest font-bold" href="https://wa.me/5492613002278" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+      </a>
+    </div>
+    <button aria-label="Menú" class="md:hidden text-white p-2 focus:outline-none" id="mobile-menu-btn">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile menu -->
+<div class="fixed inset-0 bg-primary-container z-40 hidden flex-col items-center justify-center" id="mobile-menu">
+  <ul class="flex flex-col items-center gap-2 text-center w-full px-6">
+    <li class="w-full"><a class="block text-white font-headline-md text-headline-md py-4 border-b border-on-primary-container/20 w-full mobile-link" href="#nosotros">Nosotros</a></li>
+    <li class="w-full"><a class="block text-on-primary-container/80 font-headline-md text-headline-md py-4 border-b border-on-primary-container/20 w-full mobile-link hover:text-white" href="#servicios">Servicios</a></li>
+    <li class="w-full"><a class="block text-on-primary-container/80 font-headline-md text-headline-md py-4 border-b border-on-primary-container/20 w-full mobile-link hover:text-white" href="#obras">Obras</a></li>
+    <li class="w-full"><a class="block text-on-primary-container/80 font-headline-md text-headline-md py-4 border-b border-on-primary-container/20 w-full mobile-link hover:text-white" href="#testimonios">Reseñas</a></li>
+    <li class="w-full"><a class="block text-on-primary-container/80 font-headline-md text-headline-md py-4 border-b border-on-primary-container/20 w-full mobile-link hover:text-white" href="#contacto">Contacto</a></li>
+    <li class="w-full mt-6">
+      <a class="flex items-center justify-center gap-2 bg-primary-fixed text-primary px-6 py-4 rounded w-full font-bold" href="https://wa.me/5492613002278" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined">chat</span> WhatsApp
+      </a>
+    </li>
+  </ul>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="relative h-screen min-h-[600px] w-full flex items-center overflow-hidden bg-primary">
+  <div class="absolute inset-0 z-0">
+    <img src="renders/render_1.jpeg" alt="Render del proyecto de dúplex en Vistalba, Mendoza" class="w-full h-full object-cover object-center opacity-70">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-container/95 via-primary-container/75 to-primary-container/30"></div>
+  </div>
+  <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+    <div class="max-w-3xl" style="animation: fadeUp .7s ease both;">
+      <p class="font-label-caps text-label-caps uppercase tracking-[0.3em] text-primary-fixed/80 mb-5">Constructora en Mendoza</p>
+      <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-white mb-6">
+        Tu obra, nuestra <br class="hidden md:block">responsabilidad
+      </h1>
+      <p class="font-body-lg text-body-lg text-tertiary-fixed mb-10 max-w-2xl">
+        Más de 25 años construyendo en Mendoza. Calidad humana, confianza y resultados que se ven.
+      </p>
+      <a class="inline-flex items-center justify-center gap-2 bg-white text-primary-container px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest font-bold hover:bg-primary-fixed transition-colors duration-300" href="https://wa.me/5492613002278" target="_blank" rel="noopener">
+        Hablemos de tu proyecto
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOSOTROS ============ -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="nosotros">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-unit-xl items-center">
+    <div class="order-2 lg:order-1 relative">
+      <div class="absolute -bottom-3 -right-3 w-full h-full border border-primary-container/15 rounded hidden lg:block" aria-hidden="true"></div>
+      <img src="obras/obras_18.jpeg" alt="Equipo de Constructora Puelo trabajando en obra en Mendoza" class="relative z-10 w-full h-[480px] lg:h-[600px] object-cover rounded shadow-sm">
+    </div>
+    <div class="order-1 lg:order-2">
+      <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary-container/70 mb-4">Nosotros</p>
+      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">Construimos el legado de cada cliente</h2>
+      <div class="space-y-6 font-body-lg text-body-lg text-on-surface-variant">
+        <p>Dirigida por el Ing. Daniel Bonadé, Constructora Puelo es más que una constructora: es un equipo de profesionales comprometidos con la materialización de cada proyecto. Más de 25 años de trayectoria, de la obra pública al desarrollo residencial privado.</p>
+        <p>Nuestro diferencial es el seguimiento personal y directo. Daniel está presente en obra, sin intermediarios, asegurando que cada detalle constructivo cumpla con nuestros estándares de calidad.</p>
+        <ul class="space-y-4 mt-8">
+          <li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container mt-1">architecture</span><span>Seguimiento personal y directo en cada obra.</span></li>
+          <li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container mt-1">handshake</span><span>Comunicación transparente durante todo el proceso.</span></li>
+          <li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container mt-1">verified</span><span>Control de calidad exhaustivo y plazos claros.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS (zigzag, estructura refe2) ============ -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30" id="servicios">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Servicios e Infraestructura</h2>
+      <p class="mt-4 font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Soluciones integrales de construcción para viviendas, desarrollos y obras civiles en Gran Mendoza y Valle de Uco.</p>
+    </div>
+    <div class="flex flex-col gap-12" id="servicios-list"></div>
+  </div>
+</section>
+
+<!-- ============ NUESTRAS OBRAS (masonry + lightbox) ============ -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="obras">
+  <div class="mb-16">
+    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Nuestras Obras</h2>
+    <p class="mt-4 font-body-md text-body-md text-on-surface-variant max-w-2xl">Obras terminadas, proyectos en desarrollo, trabajo de obra y maquinaria propia en operación. Tocá cualquier imagen para verla en grande.</p>
+  </div>
+  <div id="galleries"></div>
+</section>
+
+<!-- ============ TESTIMONIOS (simulación widget reseñas de Google) ============ -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30" id="testimonios">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-label-caps text-label-caps uppercase tracking-widest text-primary-container/70 mb-4">Testimonios</p>
+      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Lo que dicen nuestros clientes</h2>
+      <div class="inline-flex items-center gap-3 mt-6 bg-surface-container-lowest border border-outline-variant/50 px-5 py-3 rounded">
+        <svg viewBox="0 0 48 48" class="w-7 h-7"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+        <div class="text-left leading-tight">
+          <div class="flex items-center gap-2">
+            <span class="font-headline-md text-[20px] font-bold text-on-surface">5,0</span>
+            <span class="text-[#FBBC05] text-[18px] tracking-tight">★★★★★</span>
+          </div>
+          <div class="font-body-md text-[12px] text-on-surface-variant">Reseñas de Google</div>
+        </div>
+      </div>
+    </div>
+    <div id="reviews" class="grid grid-cols-1 md:grid-cols-3 gap-gutter"></div>
+    <p class="text-center font-body-md text-[12px] text-on-surface-variant/70 mt-10">
+      <span class="material-symbols-outlined text-[14px] align-middle">verified</span>
+      Reseñas verificadas de clientes en Google.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-primary-container w-full" id="contacto">
+  <div class="py-section-gap px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto text-on-primary-container">
+    <div class="col-span-1 flex flex-col justify-between">
+      <div>
+        <img src="puelo_logo.png" alt="Constructora Puelo" class="h-10 w-auto object-contain mb-6">
+        <p class="font-body-md text-body-md text-on-primary-container/70 max-w-xs">Tu obra, nuestra responsabilidad. Construcción de viviendas, dúplex y obras civiles en Mendoza.</p>
+      </div>
+      <p class="mt-8 font-label-caps text-label-caps text-on-primary-container/70 uppercase tracking-widest">© 2026 Puelo Desarrollos SAS. Todos los derechos reservados.</p>
+    </div>
+
+    <div class="col-span-1">
+      <h4 class="font-label-caps text-label-caps text-white uppercase tracking-widest mb-6 border-b border-on-primary-container/20 pb-2 inline-block">Contacto</h4>
+      <ul class="space-y-4 font-body-md text-body-md">
+        <li><a class="text-on-primary-container/70 hover:text-white transition flex items-center gap-2 group" href="https://wa.me/5492613002278" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">chat</span> 261 300 2278</a></li>
+        <li><a class="text-on-primary-container/70 hover:text-white transition flex items-center gap-2 group" href="tel:+5492615065226"><span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">call</span> 261 506 5226</a></li>
+        <li><a class="text-on-primary-container/70 hover:text-white transition flex items-center gap-2 group" href="mailto:puelodesarrollos@gmail.com"><span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">mail</span> puelodesarrollos@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <div class="col-span-1">
+      <h4 class="font-label-caps text-label-caps text-white uppercase tracking-widest mb-6 border-b border-on-primary-container/20 pb-2 inline-block">Redes</h4>
+      <ul class="space-y-4 font-body-md text-body-md">
+        <li><a class="text-on-primary-container/70 hover:text-white transition flex items-center gap-2 group" href="https://www.instagram.com/pueloconstructora/" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">photo_camera</span> @pueloconstructora</a></li>
+        <li><a class="text-on-primary-container/70 hover:text-white transition flex items-center gap-2 group" href="https://wa.me/5492613002278" target="_blank" rel="noopener"><span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">chat</span> WhatsApp</a></li>
+      </ul>
+    </div>
+
+    <div class="col-span-1">
+      <h4 class="font-label-caps text-label-caps text-white uppercase tracking-widest mb-6 border-b border-on-primary-container/20 pb-2 inline-block">Zonas de Trabajo</h4>
+      <ul class="space-y-4 font-body-md text-body-md">
+        <li class="text-on-primary-container/70 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">location_on</span> Gran Mendoza</li>
+        <li class="text-on-primary-container/70 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">location_on</span> Mendoza Norte</li>
+        <li class="text-on-primary-container/70 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">location_on</span> Valle de Uco</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WhatsApp flotante ============ -->
+<a class="wa-float" href="https://wa.me/5492613002278" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.13 6.744 3.05 9.376L1.05 31.3l6.124-1.958A15.9 15.9 0 0 0 16.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.31 22.594c-.386 1.09-1.918 1.994-3.14 2.258-.836.178-1.928.32-5.604-1.204-4.7-1.948-7.726-6.724-7.962-7.034-.226-.31-1.9-2.53-1.9-4.826 0-2.296 1.166-3.424 1.636-3.904.386-.394.95-.574 1.49-.574.176 0 .334.01.476.016.428.018.642.044.924.718.352.844 1.206 2.94 1.31 3.154.106.214.212.504.066.814-.138.31-.26.448-.474.69-.214.242-.418.428-.632.688-.196.226-.418.47-.17.898.248.428 1.102 1.816 2.366 2.942 1.63 1.452 2.946 1.906 3.428 2.106.358.148.784.112 1.046-.17.332-.358.742-.952 1.16-1.538.296-.42.67-.472 1.062-.324.398.138 2.508 1.182 2.936 1.396.428.214.712.318.818.498.106.18.106 1.03-.28 2.12z"/></svg>
+</a>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de obras">
+  <span class="lb-counter" id="lb-counter"></span>
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Cerrar"><span class="material-symbols-outlined">close</span></button>
+  <button class="lb-btn lb-prev" id="lb-prev" aria-label="Anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+  <button class="lb-btn lb-next" id="lb-next" aria-label="Siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+  <div class="lb-stage" id="lb-stage"></div>
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
+<script>
+/* ---------- Servicios (estructura refe2: zigzag) ---------- */
+const SERVICIOS = [
+  { icon: "home_work", title: "Construcción de viviendas desde cero", desc: "Viviendas privadas en Gran Mendoza y Valle de Uco. Dirección técnica completa, desde el proyecto hasta la llave en mano." },
+  { icon: "domain", title: "Dúplex y desarrollo propio", desc: "Proyectos propios de dúplex apareados en zonas residenciales de Mendoza. Actualmente en desarrollo: 6 dúplex en Vistalba." },
+  { icon: "construction", title: "Ampliaciones y refacciones de escala", desc: "Proyectos de ampliación y refacción de envergadura. No trabajamos arreglos chicos: sí obras que requieren planificación y dirección técnica." },
+  { icon: "landscape", title: "Movimiento de suelo y excavaciones", desc: "Excavaciones, movimientos de suelo, terraplenados y trabajos de infraestructura con maquinaria propia." },
+  { icon: "warehouse", title: "Obras civiles y galpones", desc: "Construcción de galpones industriales, obras de urbanización, redes y otras obras civiles privadas." },
+  { icon: "agriculture", title: "Alquiler de maquinaria", desc: "Retroexcavadora · Minicargadora · Camión con hidro · Rodillo doble autopropulsado. Con o sin operario. Gran Mendoza y alrededores." }
+];
+const sList = document.getElementById('servicios-list');
+SERVICIOS.forEach((s, i) => {
+  const reverse = i % 2 === 1;
+  const card = document.createElement('div');
+  card.className = "grid grid-cols-1 md:grid-cols-2 items-center bg-surface-container-lowest border border-outline-variant/50 hover:border-primary-container transition-colors duration-300 hover:shadow-[0_10px_30px_rgba(23,32,53,0.05)] group";
+  const text = `<div class="p-8 md:p-12"><h3 class="font-headline-md text-headline-md text-on-surface mb-4 group-hover:text-primary-container transition-colors">${s.title}</h3><p class="font-body-md text-body-md text-on-surface-variant">${s.desc}</p></div>`;
+  const iconPane = `<div class="p-8 flex justify-center items-center bg-surface-container-low/50 h-full min-h-[180px]"><span class="material-symbols-outlined text-8xl text-primary-container" style="font-variation-settings:'wght' 200;">${s.icon}</span></div>`;
+  card.innerHTML = reverse ? iconPane + text : text + iconPane;
+  sList.appendChild(card);
+});
+
+/* ---------- Galerías (divididas por categoría) ---------- */
+const GALLERIES = [
+  {
+    title: 'Obras Terminadas', badge: 'Finalizada',
+    items: ["casa_guada.png","casa_guada_1.png","casa_guada_2.png","casa_guada_3.png","casa_guada_4.png"]
+      .map(f => ({ t:'img', s:'casa_guada/'+f }))
+  },
+  {
+    title: 'Proyectos en Desarrollo', badge: 'En desarrollo',
+    items: ["render_1.jpeg","render_2.jpeg","render_3.jpeg"]
+      .map(f => ({ t:'img', s:'renders/'+f }))
+  },
+  {
+    title: 'Obras en Proceso', badge: 'En proceso', tint: true,
+    // obras_20 se omite por ser igual a obras_18
+    items: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,22].map(n => ({ t:'img', s:'obras/obras_'+n+'.jpeg' }))
+  },
+  {
+    title: 'Maquinaria en Operación', badge: 'En operación',
+    items: ["obras_1_video.mp4","obras_2_video.mp4"].map(f => ({ t:'vid', s:'maquinarias/'+f }))
+  }
+];
+
+/* ---------- Render galerías ---------- */
+const galCont = document.getElementById('galleries');
+GALLERIES.forEach((g, gi) => {
+  const block = document.createElement('div');
+  block.className = 'mb-section-gap last:mb-0';
+  block.innerHTML =
+    `<div class="flex items-center gap-4 mb-8">
+       <h3 class="font-headline-md text-headline-md text-on-surface whitespace-nowrap">${g.title}</h3>
+       <span class="h-px bg-outline-variant/50 flex-1"></span>
+     </div>`;
+  const grid = document.createElement('div');
+  grid.className = 'masonry' + (g.tint ? ' masonry-tint' : '');
+  g.items.forEach((m, ii) => {
+    const fig = document.createElement('figure');
+    fig.className = 'masonry-item';
+    const src = encodeURI(m.s);
+    const inner = m.t === 'img'
+      ? `<img loading="lazy" src="${src}" alt="${g.title}">`
+      : `<video src="${src}" muted playsinline preload="metadata"></video><span class="play"><span class="material-symbols-outlined">play_arrow</span></span>`;
+    fig.innerHTML = `<span class="m-badge">${g.badge}</span>` + inner;
+    fig.addEventListener('click', () => openLB(gi, ii));
+    grid.appendChild(fig);
+  });
+  block.appendChild(grid);
+  galCont.appendChild(block);
+});
+
+/* ---------- Lightbox ---------- */
+const lb = document.getElementById('lightbox');
+const lbStage = document.getElementById('lb-stage');
+const lbCaption = document.getElementById('lb-caption');
+const lbCounter = document.getElementById('lb-counter');
+let curG = 0, curI = 0;
+
+function renderLB() {
+  const g = GALLERIES[curG];
+  const m = g.items[curI];
+  const src = encodeURI(m.s);
+  lbStage.innerHTML = m.t === 'img'
+    ? `<img src="${src}" alt="${g.title}">`
+    : `<video src="${src}" controls autoplay playsinline></video>`;
+  lbCaption.textContent = g.title;
+  lbCounter.textContent = (curI + 1) + ' / ' + g.items.length;
+}
+function openLB(gi, ii) { curG = gi; curI = ii; renderLB(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeLB() { lb.classList.remove('open'); lbStage.innerHTML = ''; document.body.style.overflow = ''; }
+function navLB(d) { const n = GALLERIES[curG].items.length; curI = (curI + d + n) % n; renderLB(); }
+
+/* ---------- Reseñas (placeholder — reemplazar por widget real de Google al verificar el perfil) ---------- */
+const REVIEWS = [
+  { name: 'Marcela Funes', initial: 'M', color: '#1A73E8', when: 'hace 2 meses', stars: 5,
+    text: 'Calidad humana, confianza y cumplen. Daniel estuvo presente en cada etapa de la obra, sin intermediarios. Nuestra casa quedó impecable.' },
+  { name: 'Gustavo Pérez', initial: 'G', color: '#34A853', when: 'hace 1 mes', stars: 5,
+    text: 'Contratamos movimiento de suelo con su maquinaria propia. Tiempos cumplidos, trato directo y todo muy ordenado. Totalmente recomendables.' },
+  { name: 'Lucía Romero', initial: 'L', color: '#EA4335', when: 'hace 3 semanas', stars: 5,
+    text: 'Seguimiento personal y comunicación clara durante toda la obra. Se nota la experiencia y la responsabilidad en cada detalle.' }
+];
+const revCont = document.getElementById('reviews');
+REVIEWS.forEach((r, i) => {
+  const card = document.createElement('article');
+  card.className = 'bg-surface-container-lowest border border-outline-variant/50 rounded p-7 flex flex-col';
+  card.style.cssText = 'opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease;';
+  card.innerHTML =
+    `<div class="flex items-center gap-3 mb-4">
+       <span class="flex items-center justify-center w-10 h-10 rounded-full text-white font-headline-md text-[16px] font-bold" style="background:${r.color}">${r.initial}</span>
+       <div class="leading-tight">
+         <div class="font-body-md text-[15px] font-semibold text-on-surface">${r.name}</div>
+         <div class="font-body-md text-[12px] text-on-surface-variant">${r.when}</div>
+       </div>
+       <svg viewBox="0 0 48 48" class="w-5 h-5 ml-auto"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+     </div>
+     <div class="text-[#FBBC05] text-[16px] mb-3">${'★'.repeat(r.stars)}</div>
+     <p class="font-body-md text-body-md text-on-surface-variant">${r.text}</p>`;
+  revCont.appendChild(card);
+  // Simula la carga progresiva del widget
+  setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 250 + i * 180);
+});
+
+document.getElementById('lb-close').addEventListener('click', closeLB);
+document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); navLB(-1); });
+document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); navLB(1); });
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  else if (e.key === 'ArrowLeft') navLB(-1);
+  else if (e.key === 'ArrowRight') navLB(1);
+});
+// swipe mobile
+let touchX = null;
+lb.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 50) navLB(dx < 0 ? 1 : -1);
+  touchX = null;
+}, { passive: true });
+
+/* ---------- Mobile menu ---------- */
+const mBtn = document.getElementById('mobile-menu-btn');
+const mMenu = document.getElementById('mobile-menu');
+mBtn.addEventListener('click', () => {
+  const open = mMenu.classList.toggle('hidden') === false;
+  mMenu.classList.toggle('flex', open);
+  mBtn.querySelector('span').textContent = open ? 'close' : 'menu';
+});
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+  mMenu.classList.add('hidden'); mMenu.classList.remove('flex');
+  mBtn.querySelector('span').textContent = 'menu';
+}));
+</script>
+</body>
+</html>
