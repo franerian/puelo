@@ -80,6 +80,8 @@
     transition: transform .7s ease; will-change: transform;
   }
   .masonry-item:hover img, .masonry-item:hover video { transform: scale(1.05); }
+  /* Reserva de espacio para que el lazy-load no colapse la grilla en mobile */
+  .masonry-item video { aspect-ratio: 9 / 16; }
   /* Tinte navy sutil (solo galerías marcadas), se desvanece al hover */
   .masonry-tint .masonry-item::after {
     content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -368,6 +370,21 @@ SERVICIOS.forEach((s, i) => {
   sList.appendChild(card);
 });
 
+/* ---------- Dimensiones reales (reservan espacio → lazy-load fiable en mobile) ---------- */
+const DIMS = {
+  'casa_guada/casa_guada.png':[2390,1372], 'casa_guada/casa_guada_1.png':[1280,832],
+  'casa_guada/casa_guada_2.png':[1280,824], 'casa_guada/casa_guada_3.png':[1280,870],
+  'casa_guada/casa_guada_4.png':[960,1202],
+  'renders/render_1.jpeg':[1600,1194], 'renders/render_2.jpeg':[1600,1200], 'renders/render_3.jpeg':[1600,1194],
+  'obras/obras_1.jpeg':[960,1280], 'obras/obras_2.jpeg':[960,1280], 'obras/obras_3.jpeg':[1280,960],
+  'obras/obras_4.jpeg':[1280,960], 'obras/obras_5.jpeg':[960,1280], 'obras/obras_6.jpeg':[1280,960],
+  'obras/obras_7.jpeg':[960,1280], 'obras/obras_8.jpeg':[1280,960], 'obras/obras_9.jpeg':[960,1280],
+  'obras/obras_10.jpeg':[960,1280], 'obras/obras_11.jpeg':[960,1280], 'obras/obras_12.jpeg':[960,1280],
+  'obras/obras_13.jpeg':[960,1280], 'obras/obras_14.jpeg':[1280,960], 'obras/obras_15.jpeg':[960,1280],
+  'obras/obras_16.jpeg':[1280,960], 'obras/obras_17.jpeg':[1280,960], 'obras/obras_18.jpeg':[1280,720],
+  'obras/obras_19.jpeg':[1280,720], 'obras/obras_21.jpeg':[1280,720], 'obras/obras_22.jpeg':[1280,720]
+};
+
 /* ---------- Galerías (divididas por categoría) ---------- */
 const GALLERIES = [
   {
@@ -407,8 +424,10 @@ GALLERIES.forEach((g, gi) => {
     const fig = document.createElement('figure');
     fig.className = 'masonry-item';
     const src = encodeURI(m.s);
+    const d = DIMS[m.s];
+    const sizeAttr = d ? ` width="${d[0]}" height="${d[1]}"` : '';
     const inner = m.t === 'img'
-      ? `<img loading="lazy" src="${src}" alt="${g.title}">`
+      ? `<img loading="lazy"${sizeAttr} src="${src}" alt="${g.title}">`
       : `<video src="${src}" muted playsinline preload="metadata"></video><span class="play"><span class="material-symbols-outlined">play_arrow</span></span>`;
     fig.innerHTML = `<span class="m-badge">${g.badge}</span>` + inner;
     fig.addEventListener('click', () => openLB(gi, ii));
